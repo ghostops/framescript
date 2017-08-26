@@ -10,7 +10,7 @@ var conf = {
         noFilesSelected: 'No files selected',
         selectFiles: 'Please select files',
     },
-    fileTypes: '*.jpg;*.jpeg;*.JPG;',
+    fileTypes: '*.jpg;*.jpeg;',
 };
 
 // Globals
