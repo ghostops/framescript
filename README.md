@@ -1,2 +1,2 @@
-# framescript
-Photoshop script for framing pictures
+# Framescript
+Photoshop script for framing multiple pictures and outputting them in a separate folder.
