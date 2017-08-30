@@ -1,7 +1,7 @@
 ﻿// Configuration
 var conf = {
     outputFolderName: 'output',
-    fileSuffix: '(framed)',
+    filePrefix: '(framed)',
     layers: {
         frame: 'frame',
         image: 'image'
@@ -14,8 +14,7 @@ var conf = {
 };
 
 // Globals
-var doc = app.activeDocument
-var frame = doc.layers.getByName(conf.layers.frame);
+var doc = app.activeDocument;
 var image = doc.layers.getByName(conf.layers.image);
 
 var SMART_OBJECT = 'LayerKind.SMARTOBJECT';
@@ -32,7 +31,7 @@ function run() {
                 replaceContents(files[i]);
             };  
             smartObject.close(SaveOptions.SAVECHANGES);  
-            savePng(files[i].name + conf.fileSuffix);
+            savePng(conf.filePrefix + files[i].name);
         }  
     } else {
         alert(conf.i18n.noFilesSelected);
@@ -63,7 +62,7 @@ function replaceContents(newFile) {
     var idnull = charIDToTypeID('null');
     desc.putPath(idnull, new File(newFile));
     var idPgNm = charIDToTypeID('PgNm');
-    desc3.putInteger(idPgNm, 1);
+    desc.putInteger(idPgNm, 1);
     executeAction(idplacedLayerReplaceContents, desc, DialogModes.NO);
 
     return app.activeDocument.activeLayer;
